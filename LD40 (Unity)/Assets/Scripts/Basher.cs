@@ -27,6 +27,8 @@ public class Basher : MonoBehaviour
         MaxParts = 2;
         MaxEnchantments = 1;
 
+        this.GetComponent<Damagable>().IsEnemy = false;
+
         if (parts == null) parts = new BasherPart[MaxParts];
         ResistMults = new float[MaxParts];
 

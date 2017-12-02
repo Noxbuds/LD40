@@ -41,7 +41,7 @@ public class GameUI : MonoBehaviour {
         GUI.DrawTexture(new Rect(PlrXPos, ypos + HealthArtFG.height * 0.5f * scale - 0.5f * scale, HealthArtFG.width * 0.5f * scale * PlrPercentage, HealthArtFG.height * scale * 0.5f), PlainTex(new Color(0.2f, 1.0f, 0.2f)));
 
         // Then the wall health bar
-        float WallPercentage = WallDmgb.Health / 100.0f;
+        float WallPercentage = GameObject.FindObjectOfType<Castle>().TotalHealth / 100.0f;
         if (WallPercentage < 0)
             WallPercentage = 0;
 

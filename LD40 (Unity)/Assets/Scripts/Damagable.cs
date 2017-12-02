@@ -21,6 +21,9 @@ public class Damagable : MonoBehaviour
     protected float _Speed;
     private Rigidbody2D rb;
 
+    // Whether or not this belongs to the enemy castle
+    public bool IsEnemy;
+
     // Public stat handlers
     public float Health
     {
