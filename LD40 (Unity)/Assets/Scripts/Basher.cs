@@ -8,7 +8,7 @@ public class Basher : MonoBehaviour
     // The main script that controls the battering ram
 
     // Local references
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private Basher _this;
     public BasherPart[] parts;
 
@@ -19,11 +19,11 @@ public class Basher : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        rb = this.GetComponent<Rigidbody>();
+        rb = this.GetComponent<Rigidbody2D>();
         _this = this.gameObject.GetComponent<Basher>();
         
         // Assign max parts and enchantments
-        MaxParts = 3;
+        MaxParts = 2;
         MaxEnchantments = 1;
 
         if (parts == null) parts = new BasherPart[MaxParts];

@@ -7,7 +7,7 @@ public class BasherController : MonoBehaviour
 {
 
     // Input handler for the battering ram
-    Rigidbody rb;
+    Rigidbody2D rb;
     Basher basher;
 
     // Key bindings:
@@ -20,7 +20,7 @@ public class BasherController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        rb = this.GetComponent<Rigidbody>();
+        rb = this.GetComponent<Rigidbody2D>();
         basher = this.GetComponent<Basher>();
 
         // just use some pre defined key bindings for now

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Damagable : MonoBehaviour
 {
 
@@ -19,7 +19,7 @@ public class Damagable : MonoBehaviour
     private float _Damage;
     [SerializeField]
     protected float _Speed;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
 
     // Public stat handlers
     public float Health
@@ -69,7 +69,7 @@ public class Damagable : MonoBehaviour
     // Set a default value for health
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
+        rb = this.GetComponent<Rigidbody2D>();
 
         // Trigger-less value setting
         if (_Health == 0) _Health = 100;
@@ -86,7 +86,7 @@ public class Damagable : MonoBehaviour
     }
 
 	// Collision detection
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collider is a Damagable
         if (collision.collider.gameObject.GetComponent<Damagable>() != null)
