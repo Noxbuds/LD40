@@ -14,7 +14,7 @@ public class EnchantSpeed : BasherPart
     {
         base.Initialise(ref basher);
 
-        ID = 2;
+        ID = 4;
     }
 
     // Update is called once per frame
