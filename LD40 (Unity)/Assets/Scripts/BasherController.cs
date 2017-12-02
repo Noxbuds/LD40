@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Basher))]
-public class BasherController : MonoBehaviour {
+public class BasherController : MonoBehaviour
+{
 
     // Input handler for the battering ram
     Rigidbody rb;
+    Basher basher;
 
     // Key bindings:
     public KeyCode Left;
@@ -16,8 +18,10 @@ public class BasherController : MonoBehaviour {
     public WheelCollider[] wheels;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         rb = this.GetComponent<Rigidbody>();
+        basher = this.GetComponent<Basher>();
 
         // just use some pre defined key bindings for now
         Left = KeyCode.A;
@@ -31,29 +35,29 @@ public class BasherController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         // Check input and add forces
         // TODO: Make a maximum speed
         if (Input.GetKey(Left))
         {
-            //rb.AddRelativeForce(new Vector3(-10000000.0f * rb.mass, 0.0f, 0.0f));
             for (int i = 0; i < wheels.Length; i++)
             {
-                wheels[i].motorTorque = -1000;
+                wheels[i].motorTorque = -1000 * basher.SpeedMultiplier;
             }
         }
         else if (Input.GetKey(Right))
         {
-            //rb.AddRelativeForce(new Vector3(10000000.0f * rb.mass, 0.0f, 0.0f));
             for (int i = 0; i < wheels.Length; i++)
             {
-                wheels[i].motorTorque = 1000;
+                wheels[i].motorTorque = 1000 * basher.SpeedMultiplier;
             }
         }
         else
         {
             for (int i = 0; i < wheels.Length; i++)
             {
+                wheels[i].brakeTorque = 0;
                 wheels[i].motorTorque = 0;
             }
         }
