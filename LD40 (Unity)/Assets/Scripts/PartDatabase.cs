@@ -11,6 +11,32 @@ public class PartDatabase : MonoBehaviour {
     // Use public dictionaries to store the data
     public GameObject[] PrefabList;
     public ItemInfo[] ItemInfoList;
+
+    /// <summary>
+    /// Get the prefab associated with a specified item ID
+    /// </summary>
+    /// <param name="id">The ID of the item prefab you're trying to get</param>
+    /// <returns></returns>
+    public GameObject RetrievePrefab(int id)
+    {
+        if (id < PrefabList.Length)
+            return PrefabList[id];
+        else
+            return null;
+    }
+
+    /// <summary>
+    /// Get the item info (name, description) of an item
+    /// </summary>
+    /// <param name="id">The ID of the item you're looking for</param>
+    /// <returns></returns>
+    public ItemInfo RetrieveData(int id)
+    {
+        if (id < ItemInfoList.Length)
+            return ItemInfoList[id];
+        else
+            return null;
+    }
 }
 
 // Item info struct

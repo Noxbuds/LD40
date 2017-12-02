@@ -569,6 +569,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1533037717}
+  - component: {fileID: 1533037718}
   m_Layer: 0
   m_Name: PartDatabase
   m_TagString: Untagged
@@ -589,6 +590,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1533037718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1533037716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddd38167eb8bc04d8451b894b236657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabList:
+  - {fileID: 1630777745223762, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
+  - {fileID: 1630777745223762, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
+  - {fileID: 1630777745223762, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
+  ItemInfoList:
+  - ItemID: 0
+    ItemName: Heavy Plating
+    ItemDescription: Reduces your Basher's damage taken and movement speed by 10%
+  - ItemID: 1
+    ItemName: Shock Absorber
+    ItemDescription: Reduces your Basher's damage taken from collisions by 15%
+  - ItemID: 2
+    ItemName: Heavy Shield
+    ItemDescription: Shields your Basher from a total of 50 damage, then breaks
 --- !u!1 &1631338471
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedMultiplier: 0
+  MaxParts: 0
+  MaxEnchantments: 0
 --- !u!114 &2089838390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,7 +903,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105935485}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

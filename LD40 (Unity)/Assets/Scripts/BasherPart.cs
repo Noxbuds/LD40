@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BasherPart
 {
+    public enum Type { Part, Enchantment };
+
     // Base class for a basher part
     protected Damagable damagable;
-    public int id;
+    public int ID;
+    public Type PartType;
 
     // Stuff for displaying on the basher
     public GameObject WorldPrefab;
@@ -15,6 +18,10 @@ public class BasherPart
     // Constructor
     public BasherPart()
     {
+        // Attempt to fetch the model prefab
+        PartDatabase partDB = (PartDatabase)GameObject.FindObjectOfType<PartDatabase>(); // there'll only ever be one part database in the scene
+        WorldPrefab = partDB.RetrievePrefab(ID);
+
         // Initialise the world prefab if it's assigned
         if (WorldPrefab != null)
         {
@@ -32,10 +39,20 @@ public class BasherPart
     /// <summary>
     /// Triggered whenever the basher collides with an object
     /// </summary>
-    public virtual void OnHit(ref Basher basher, ref Damagable target) { damagable = basher.GetComponent<Damagable>(); }
+    public virtual void OnHit(ref Basher basher, ref Damagable target, float damage) { damagable = basher.GetComponent<Damagable>(); }
 
     /// <summary>
     /// Triggered whenever the basher is damaged (e.g from archers)
     /// </summary>
-    public virtual void OnDamage(ref Basher basher) { damagable = basher.GetComponent<Damagable>(); }
+    public virtual void OnDamage(ref Basher basher, float damage) { damagable = basher.GetComponent<Damagable>(); }
+
+    /// <summary>
+    /// Triggered after the basher collides with an object and has taken damage
+    /// </summary>
+    public virtual void PostHit(ref Basher basher, ref Damagable target, float damage) { damagable = basher.GetComponent<Damagable>(); }
+
+    /// <summary>
+    /// Triggered after the basher is damaged (e.g from archers) and has taken the damage
+    /// </summary>
+    public virtual void PostDamage(ref Basher basher, float damage) { damagable = basher.GetComponent<Damagable>(); }
 }

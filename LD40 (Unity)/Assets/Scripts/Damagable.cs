@@ -114,14 +114,19 @@ public class Damagable : MonoBehaviour
         // damagable will also have this event trigger and will take away the other
         // object's health
 
+        float damageDealt = 0;
+
+        // Pre-calculate damage for parts
+        if (this.gameObject.name == "Wall")
+            damageDealt = Damage + Damage * (Mathf.Log(other.Speed) + 0.0005f * Mathf.Pow(other.Speed, 2.0f));
+        else
+            damageDealt = Damage + Damage * (Mathf.Log(Speed) + 0.0005f * Mathf.Pow(Speed, 2.0f));
+
         // Extra triggers for the battering ram
         if (other.gameObject.GetComponent<Basher>() != null)
-            other.gameObject.GetComponent<Basher>().OnHit(ref other);
+            other.gameObject.GetComponent<Basher>().OnHit(ref other, damageDealt);
 
         // Walls' damage will scale based on the other object's speed
-        if (this.gameObject.name == "Wall")
-            other.Health -= Damage * other.Resistance + Damage * (Mathf.Log(other.Speed) * 0.0005f * Mathf.Pow(other.Speed, 2.0f));
-        else
-            other.Health -= Damage * other.Resistance + Damage * (Mathf.Log(Speed) * 0.0005f * Mathf.Pow(Speed, 2.0f));
+        other.Health -= damageDealt * other.Resistance;
     }
 }
