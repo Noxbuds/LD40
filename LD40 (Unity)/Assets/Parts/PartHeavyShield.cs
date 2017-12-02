@@ -34,17 +34,22 @@ public class PartHeavyShield : BasherPart
     {
         base.OnHit(ref basher, ref target, damage);
 
-        // Heal the basher before it takes damage
-        damagable.Health += damage;
+        // If the damage is less than the shield's remaining health, add the
+        // damage to the basher's health. This will effectively bring the damage
+        // taken to 0.
+        if (damage < Health)
+        {
+            damagable.Health += damage;
+            Health -= damage;
+        }
 
-        // Take the damage away from this shield's health
-        Health -= damage;
-
-        // If the shield's health is below 0, deal the excess to the basher
-        if (Health < 0)
+        // If the damage is greater than the shield's remaining health, just add all
+        // of that to the basher's health and remove it
+        if (damage > Health)
+        {
             damagable.Health += Health;
-
-        Debug.Log(Health);
+            Health = 0;
+        }
 
         // Destroy the shield if its HP goes below 0
         if (Health <= 0)

@@ -15,22 +15,6 @@ public class BasherPart
     public GameObject WorldPrefab;
     public GameObject WorldAsset;
 
-    // Constructor
-    public BasherPart()
-    {
-        // Attempt to fetch the model prefab
-        PartDatabase partDB = (PartDatabase)GameObject.FindObjectOfType<PartDatabase>(); // there'll only ever be one part database in the scene
-        WorldPrefab = partDB.RetrievePrefab(ID);
-
-        // Initialise the world prefab if it's assigned
-        if (WorldPrefab != null)
-        {
-            WorldAsset = (GameObject) GameObject.Instantiate(WorldPrefab);
-            WorldAsset.transform.parent = GameObject.Find("Basher").transform;
-            WorldAsset.transform.localPosition = Vector3.zero;
-        }
-    }
-
     /// <summary>
     /// Triggered on startup to modify things
     /// </summary>
@@ -55,4 +39,25 @@ public class BasherPart
     /// Triggered after the basher is damaged (e.g from archers) and has taken the damage
     /// </summary>
     public virtual void PostDamage(ref Basher basher, float damage) { damagable = basher.GetComponent<Damagable>(); }
+
+    /// <summary>
+    /// Called every frame by the Basher
+    /// </summary>
+    public virtual void Update(ref Basher basher) { damagable = basher.GetComponent<Damagable>();  }
+
+    // Spawns the prefab in the world
+    public void SpawnPrefab()
+    {
+        // Attempt to fetch the model prefab
+        PartDatabase partDB = (PartDatabase)GameObject.FindObjectOfType<PartDatabase>(); // there'll only ever be one part database in the scene
+        WorldPrefab = partDB.RetrievePrefab(ID);
+
+        // Initialise the world prefab if it's assigned
+        if (WorldPrefab != null)
+        {
+            WorldAsset = (GameObject)GameObject.Instantiate(WorldPrefab);
+            WorldAsset.transform.parent = GameObject.Find("Basher").transform;
+            WorldAsset.transform.localPosition = Vector3.zero;
+        }
+    }
 }

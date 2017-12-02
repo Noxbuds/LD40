@@ -588,19 +588,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrefabList:
-  - {fileID: 1630777745223762, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
-  - {fileID: 1630777745223762, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
-  - {fileID: 1630777745223762, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
+  - {fileID: 1884134860066520, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
+  - {fileID: 1989815403577836, guid: 4f301135fbf0467449bf1276fca62174, type: 2}
+  - {fileID: 1615593436372326, guid: 93a226bc577b33f42bf35898d985a244, type: 2}
+  - {fileID: 1905543895611058, guid: 080ecc25927ac7449902880680a78918, type: 2}
+  - {fileID: 1484886049204980, guid: a9cffa8a57a4ccd4b9a333f8dbfba990, type: 2}
+  - {fileID: 1571854254096508, guid: 35ec2d03fd98bb74098b2dbce58db0a7, type: 2}
+  - {fileID: 1682571740663962, guid: baca5cfea16967e4e9eac8e0d4b196a1, type: 2}
   ItemInfoList:
   - ItemID: 0
     ItemName: Heavy Plating
-    ItemDescription: Reduces your Basher's damage taken and movement speed by 10%
+    ItemDescription: Made of our Royal Blacksmith's finest metals, this armour for
+      your basher makes it take less damage, at the cost of moving slightly slower
   - ItemID: 1
-    ItemName: Shock Absorber
-    ItemDescription: Reduces your Basher's damage taken from collisions by 15%
-  - ItemID: 2
     ItemName: Heavy Shield
-    ItemDescription: Shields your Basher from a total of 50 damage, then breaks
+    ItemDescription: When we asked our Royal Blacksmith how large a shield he could
+      forge, he crafted us this marvellous piece of art. This will surely protect
+      our basher, but it can only take so much damage!
+  - ItemID: 2
+    ItemName: Mark of Health
+    ItemDescription: Slowly repairs the basher over time
+  - ItemID: 3
+    ItemName: Mark of Sacrifice
+    ItemDescription: On impact, sacrifices some health to deal extra damage
+  - ItemID: 4
+    ItemName: Mark of Speed
+    ItemDescription: You take less damage from sources other than collisions the faster
+      you travel
+  - ItemID: 5
+    ItemName: Miniature Windmill
+    ItemDescription: My lord, I believe if we rotate this unusual contraption, it
+      will cause us to travel forward with slightly more speed
+  - ItemID: 6
+    ItemName: Sail
+    ItemDescription: Our most brilliant soldiers of the Navy claim that this large
+      piece of canvas will make our basher travel faster!
 --- !u!1 &1631338471
 GameObject:
   m_ObjectHideFlags: 0
