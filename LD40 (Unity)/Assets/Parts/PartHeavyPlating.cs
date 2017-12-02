@@ -19,6 +19,9 @@ public class PartHeavyPlating : BasherPart
     {
         base.Initialise(ref basher);
 
+        // Heavy Plating is ID 0
+        id = 0;
+
         // Decrease resistance by 0.1 (make the basher take 10% less)
         damagable.Resistance -= 0.1f;
     }
