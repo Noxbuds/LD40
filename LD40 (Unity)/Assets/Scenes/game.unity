@@ -909,6 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5291621070b5bff4b904bc6fbab0bf86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResistMults: []
   SpeedMultiplier: 0
   MaxParts: 0
   MaxEnchantments: 0
@@ -959,6 +960,7 @@ GameObject:
   - component: {fileID: 2105935488}
   - component: {fileID: 2105935487}
   - component: {fileID: 2105935486}
+  - component: {fileID: 2105935491}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1036,3 +1038,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2105935491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2105935485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc2616b075e87e42b1155fc98e0fd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BasherDmgb: {fileID: 2089838390}
+  WallDmgb: {fileID: 1631338476}
+  HealthArtFG: {fileID: 2800000, guid: 79a8cd5c371b2df40b7e5fc362f45a49, type: 3}
+  HealthArtBG: {fileID: 2800000, guid: 5e6f5e05df99e7743bc8121bf46f062c, type: 3}
+  Plain: {fileID: 2800000, guid: 57d8db2120e15a7418e3285d5a7f178b, type: 3}
