@@ -88,20 +88,26 @@ public class Damagable : MonoBehaviour
 	// Collision detection
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the collider is a Damagable
-        if (collision.collider.gameObject.GetComponent<Damagable>() != null)
+        if (collision.collider.gameObject.name != "wheel" && this.gameObject.name != "wheel")
         {
-            // Handle the Damagable effects
-            Damagable other = collision.collider.gameObject.GetComponent<Damagable>();
+            // Check if the collider is a Damagable
+            if (collision.collider.gameObject.GetComponent<Damagable>() != null)
+            {
+                // Handle the Damagable effects
+                Damagable other = collision.collider.gameObject.GetComponent<Damagable>();
 
-            HandleCollision(other);
-        }
-        else if (collision.collider.transform.parent.GetComponent<Damagable>() != null)
-        {
-            // for objects who have their colliders as children
-            Damagable other = collision.collider.transform.parent.GetComponent<Damagable>();
+                HandleCollision(other);
+            }
+            else if (collision.collider.transform.parent != null) // fixes an error that arose when putting the terrain's collider onto the parent
+            {
+                if (collision.collider.transform.parent.GetComponent<Damagable>() != null)
+                {
+                    // for objects who have their colliders as children
+                    Damagable other = collision.collider.transform.parent.GetComponent<Damagable>();
 
-            HandleCollision(other);
+                    HandleCollision(other);
+                }
+            }
         }
     }
 
