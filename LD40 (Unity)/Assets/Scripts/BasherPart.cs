@@ -2,9 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasherPart {
-
+public class BasherPart
+{
+    // Base class for a basher part
     protected Damagable damagable;
+    public int id;
+
+    // Stuff for displaying on the basher
+    public GameObject WorldPrefab;
+    public GameObject WorldAsset;
+
+    // Constructor
+    public BasherPart()
+    {
+        // Initialise the world prefab if it's assigned
+        if (WorldPrefab != null)
+        {
+            WorldAsset = (GameObject) GameObject.Instantiate(WorldPrefab);
+            WorldAsset.transform.parent = GameObject.Find("Basher").transform;
+            WorldAsset.transform.localPosition = Vector3.zero;
+        }
+    }
 
     /// <summary>
     /// Triggered on startup to modify things

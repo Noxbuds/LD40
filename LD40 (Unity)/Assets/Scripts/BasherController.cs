@@ -14,8 +14,8 @@ public class BasherController : MonoBehaviour
     public KeyCode Left;
     public KeyCode Right;
 
-    // Wheels - needed to make them move freely
-    public WheelCollider[] wheels;
+    // Force applied when moving
+    float MovingForce = 20;
 
 	// Use this for initialization
 	void Start ()
@@ -26,40 +26,20 @@ public class BasherController : MonoBehaviour
         // just use some pre defined key bindings for now
         Left = KeyCode.A;
         Right = KeyCode.D;
-
-        // fix jittering with wheel collider
-        for (int i = 0; i < wheels.Length; i++)
-        {
-            wheels[i].ConfigureVehicleSubsteps(10, 10, 10);
-        }
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
     {
         // Check input and add forces
-        // TODO: Make a maximum speed
         if (Input.GetKey(Left))
         {
-            for (int i = 0; i < wheels.Length; i++)
-            {
-                wheels[i].motorTorque = -1000 * basher.SpeedMultiplier;
-            }
+            // How the hell big do these forces need to be ?!
+            rb.AddForce(-MovingForce * basher.SpeedMultiplier * basher.transform.forward);
         }
         else if (Input.GetKey(Right))
         {
-            for (int i = 0; i < wheels.Length; i++)
-            {
-                wheels[i].motorTorque = 1000 * basher.SpeedMultiplier;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < wheels.Length; i++)
-            {
-                wheels[i].brakeTorque = 0;
-                wheels[i].motorTorque = 0;
-            }
+            rb.AddForce(MovingForce * basher.SpeedMultiplier * basher.transform.forward);
         }
 	}
 }
