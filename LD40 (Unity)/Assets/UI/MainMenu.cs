@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour {
      * 
      * 0 = Main Menu
      * 1 = Level Select
-     * 2 = Shop
+     * 2 = Parts
      * 3 = Options
      */
     public int MenuID;
@@ -58,8 +58,8 @@ public class MainMenu : MonoBehaviour {
                 if (GUI.Button(new Rect(leftX, topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Play", ButtonStyle))
                     MenuID = 1;
 
-                // Shop button
-                if (GUI.Button(new Rect(rightX, topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Shop", ButtonStyle))
+                // Parts button
+                if (GUI.Button(new Rect(rightX, topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Parts", ButtonStyle))
                     MenuID = 2;
 
                 // Options button
@@ -103,8 +103,27 @@ public class MainMenu : MonoBehaviour {
                 }
 
                 break;
-            case 2: // Shop
+            case 2: // Parts
                 ShowGold = true; // for sure
+
+                // Same style as the level selection
+                // 3x2 display of parts. Will also need a forward/backward button...
+                X1 = 11 * ButtonScale;
+                X2 = 71 * ButtonScale;
+                X3 = 131 * ButtonScale;
+                topY = 43 * ButtonScale;
+                bottomY = 70 * ButtonScale;
+
+                for (int i = 0; i < 6; i++)
+                {
+                    // The index of the X position to use; 1, 2 or 3
+                    int xi = (i > 2) ? i - 3 : i;
+                    float ThisX = (xi == 0) ? X1 : ((xi == 1) ? X2 : X3); // if xi is 0, ThisX = X1, otherwise if xi = 1, ThisX = X2, otherwise ThisX = X3
+
+                    // Draw the button
+                    GUI.Button(new Rect(ThisX, i > 2 ? bottomY : topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Under construction!", ButtonStyle);
+                }
+
                 break;
             case 3: // Options
                 break;
