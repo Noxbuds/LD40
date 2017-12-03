@@ -483,7 +483,7 @@ MonoBehaviour:
   TotalHealth: 0
   MaxHealth: 0
   NumberOfMages: 0
-  NumberOfArchers: 0
+  NumberOfArchers: 1
 --- !u!1 &159430215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1332,6 @@ MonoBehaviour:
     Enchantments: 
   LevelNumber: 0
   MaxLevels: 3
-  MainMenu: 0
 --- !u!1 &454376488
 GameObject:
   m_ObjectHideFlags: 0
@@ -7244,6 +7243,73 @@ MonoBehaviour:
   SuccessImg: {fileID: 2800000, guid: b201bdc94736dee45acfeabbaa7a35c2, type: 3}
   FailureImg: {fileID: 2800000, guid: abbd796f240479c44b6af9fa92adbb49, type: 3}
   GoldDisplayBar: {fileID: 2800000, guid: c9bfa9359e17d5b4196843374dfaef10, type: 3}
+  BackButtonStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 72e8adbed57401e49b7eee02cb87caaf, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 2800000, guid: ecab32a0fa9ee7f47be40551d19623ac, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 2800000, guid: 105cbc5e8986b5040a301e47ec6d1d4d, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
   GameFont: {fileID: 12800000, guid: 4c2245eef9d37404292b26a98c240e50, type: 3}
 --- !u!114 &2105935492
 MonoBehaviour:

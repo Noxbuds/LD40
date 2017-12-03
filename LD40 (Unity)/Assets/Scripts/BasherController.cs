@@ -7,23 +7,17 @@ public class BasherController : MonoBehaviour
 {
 
     // Input handler for the battering ram
-    Rigidbody2D rb;
-    Basher basher;
 
     // Key bindings:
     public KeyCode Left;
     public KeyCode Right;
 
     // Force applied when moving
-    float MovingForce = 20;
     public HingeJoint2D[] Wheels;
 
 	// Use this for initialization
 	void Start ()
     {
-        rb = this.GetComponent<Rigidbody2D>();
-        basher = this.GetComponent<Basher>();
-
         // just use some pre defined key bindings for now
         Left = KeyCode.A;
         Right = KeyCode.D;

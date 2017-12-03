@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class GameUI : MonoBehaviour {
     public Texture2D SuccessImg;
     public Texture2D FailureImg;
     public Texture2D GoldDisplayBar;
+    public GUIStyle BackButtonStyle;
     public Font GameFont;
 
     private bool WonGame;
@@ -48,6 +50,26 @@ public class GameUI : MonoBehaviour {
         {
             float scale = Screen.width / FailureImg.width;
             GUI.DrawTexture(new Rect(Screen.width / 2 - FailureImg.width / 2 * scale, Screen.height / 2 - FailureImg.height / 2 * scale, FailureImg.width * scale, FailureImg.height * scale), FailureImg);
+        }
+
+        // Game ending screen
+        if (GameEnded)
+        {
+            // Just for positioning stuff nicely
+            float scale = Screen.width / SuccessImg.width;
+
+            // Scale for the buttons
+            float ButtonScale = (Screen.width * 0.276f) / 57f;
+
+            float ImgWidth = BackButtonStyle.normal.background.width;
+            float ImgHeight = BackButtonStyle.normal.background.height;
+
+            // Draw the button
+            if (GUI.Button(new Rect(Screen.width / 2 - ImgWidth / 2 * ButtonScale, Screen.height / 2 + FailureImg.height / 2 * scale, ImgWidth * ButtonScale, ImgHeight * ButtonScale), "", BackButtonStyle))
+            {
+                Time.timeScale = 1.0f;
+                SceneManager.LoadScene("Main Menu");
+            }
         }
 
         // Draw the amount of gold the player has

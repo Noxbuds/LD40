@@ -13,7 +13,6 @@ public class PlayerData : MonoBehaviour
     public SPData playerData;
     public int LevelNumber;
     public int MaxLevels;
-    public bool MainMenu;
 
     // Amount of gold the player has (moved into player data)
     // You can't have e.g 1.5 gold (well I guess you can but...)
@@ -23,16 +22,15 @@ public class PlayerData : MonoBehaviour
 	void Awake ()
     {
         // Set save file path
-        SaveFilePath = Application.dataPath + "/Save/player.dat";
+        SaveFilePath = Application.dataPath + "/player.dat";
 
         // Load the player's save
-        if (!MainMenu)
-            LoadProgress();
+        LoadProgress();
 	}
 
     // Save the player data with a simple data
     // class that's serialisable
-    void SaveProgress()
+    public void SaveProgress()
     {
         Debug.Log("Saving progress.");
 
@@ -47,7 +45,7 @@ public class PlayerData : MonoBehaviour
     }
 
     // Loads the player's progress from the file
-    void LoadProgress()
+    public void LoadProgress()
     {
         // Create a new save file
         if (!File.Exists(SaveFilePath))

@@ -8,7 +8,6 @@ public class Basher : MonoBehaviour
     // The main script that controls the battering ram
 
     // Local references
-    private Rigidbody2D rb;
     private Basher _this;
     public BasherPart[] parts;
     public float[] ResistMults;
@@ -25,7 +24,6 @@ public class Basher : MonoBehaviour
     {
         Application.targetFrameRate = 0;
 
-        rb = this.GetComponent<Rigidbody2D>();
         _this = this.gameObject.GetComponent<Basher>();
 
         this.GetComponent<Damagable>().IsEnemy = false;
