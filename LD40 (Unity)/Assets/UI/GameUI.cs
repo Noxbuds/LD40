@@ -67,7 +67,6 @@ public class GameUI : MonoBehaviour {
             // Draw the button
             if (GUI.Button(new Rect(Screen.width / 2 - ImgWidth / 2 * ButtonScale, Screen.height / 2 + FailureImg.height / 2 * scale, ImgWidth * ButtonScale, ImgHeight * ButtonScale), "", BackButtonStyle))
             {
-                Time.timeScale = 1.0f;
                 SceneManager.LoadScene("Main Menu");
             }
         }
