@@ -20,6 +20,7 @@ public class PlayerData : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        // Set save file path
         SaveFilePath = Application.dataPath + "/Save/player.data";
 	}
 	
@@ -43,6 +44,12 @@ public class PlayerData : MonoBehaviour
     public int GetGoldAmount()
     {
         return Gold;
+    }
+
+    // Award some gold
+    public void AwardGold(int amount)
+    {
+        Gold += amount;
     }
 
     // Serialisable player data class

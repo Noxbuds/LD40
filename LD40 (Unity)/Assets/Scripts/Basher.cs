@@ -23,6 +23,8 @@ public class Basher : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        Application.targetFrameRate = 0;
+
         rb = this.GetComponent<Rigidbody2D>();
         _this = this.gameObject.GetComponent<Basher>();
         
@@ -42,7 +44,6 @@ public class Basher : MonoBehaviour
         SpeedMultiplier = 1;
 
         // Add parts
-        parts[0] = new EnchantSpeed();
         
         // Go through parts and call the Init function
         for (int i = 0; i < parts.Length; i++)

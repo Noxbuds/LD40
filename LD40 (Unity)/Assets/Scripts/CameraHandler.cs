@@ -11,7 +11,7 @@ public class CameraHandler : MonoBehaviour {
 	void Update () {
         Vector3 newPos = this.transform.position;
         newPos.x = BasherTrns.transform.position.x;
-        newPos.y = 0.5f * BasherTrns.transform.position.y;
+        newPos.y = 0.7f * BasherTrns.transform.position.y;
         this.transform.position = newPos;
 	}
 }

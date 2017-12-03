@@ -50,6 +50,15 @@ public class GameUI : MonoBehaviour {
             GUI.DrawTexture(new Rect(Screen.width / 2 - FailureImg.width / 2 * scale, Screen.height / 2 - FailureImg.height / 2 * scale, FailureImg.width * scale, FailureImg.height * scale), FailureImg);
         }
 
+        // Draw the amount of gold the player has
+        float goldScale = (Screen.width * 0.1f) / GoldDisplayBar.width;
+        TextStyle.fontSize = (int)(Screen.height * 0.04f);
+        TextStyle.normal.textColor = Color.white;
+        int goldAmount = GameObject.FindObjectOfType<PlayerData>().GetGoldAmount();
+
+        GUI.DrawTexture(new Rect(0, 0, GoldDisplayBar.width * goldScale, GoldDisplayBar.height * goldScale), GoldDisplayBar);
+        GUI.Label(new Rect(10 + 16 * goldScale, 2 * goldScale, 150, 50), goldAmount.ToString(), TextStyle);
+
         // Normal UI code
         if (!WonGame && !GameEnded)
         {
@@ -81,15 +90,6 @@ public class GameUI : MonoBehaviour {
 
             // And finally draw the beautiful castle art on top
             GUI.DrawTexture(new Rect(xpos, ypos, HealthArtFG.width * scale, HealthArtFG.height * scale), HealthArtFG);
-
-            // Draw the amount of gold the player has
-            float goldScale = (Screen.width * 0.1f) / GoldDisplayBar.width;
-            TextStyle.fontSize = (int)(Screen.height * 0.04f);
-            TextStyle.normal.textColor = Color.white;
-            int goldAmount = GameObject.FindObjectOfType<PlayerData>().GetGoldAmount();
-
-            GUI.DrawTexture(new Rect(0, 0, GoldDisplayBar.width * goldScale, GoldDisplayBar.height * goldScale), GoldDisplayBar);
-            GUI.Label(new Rect(10 + 16 * goldScale, 2 * goldScale, 150, 50), goldAmount.ToString(), TextStyle);
         }
     }
 

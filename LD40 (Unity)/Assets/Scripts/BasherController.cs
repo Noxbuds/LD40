@@ -34,10 +34,18 @@ public class BasherController : MonoBehaviour
     {
         // Check input and add forces
         if (Input.GetKey(Left))
+            // Using hinge joints to hold the wheels in place, and using
+            // their rigidbodies' torque mechanics to move the basher
             for (int i = 0; i < Wheels.Length; i++)
+            {
                 Wheels[i].GetComponent<Rigidbody2D>().AddTorque(10);
+            }
         else if (Input.GetKey(Right))
+            // Using hinge joints to hold the wheels in place, and using
+            // their rigidbodies' torque mechanics to move the basher
             for (int i = 0; i < Wheels.Length; i++)
+            {
                 Wheels[i].GetComponent<Rigidbody2D>().AddTorque(-10);
+            }
 	}
 }
