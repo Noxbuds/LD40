@@ -14,8 +14,8 @@ public class Basher : MonoBehaviour
     public float[] ResistMults;
 
     public float SpeedMultiplier;
-    public int MaxParts;
-    public int MaxEnchantments;
+    public static int MaxParts = 2;
+    public static int MaxEnchantments = 1;
 
     public bool GameWon;
     public bool GameEnded;
@@ -27,10 +27,6 @@ public class Basher : MonoBehaviour
 
         rb = this.GetComponent<Rigidbody2D>();
         _this = this.gameObject.GetComponent<Basher>();
-        
-        // Assign max parts and enchantments
-        MaxParts = 2;
-        MaxEnchantments = 1;
 
         this.GetComponent<Damagable>().IsEnemy = false;
 
@@ -43,7 +39,7 @@ public class Basher : MonoBehaviour
         dmgb.Resistance = 1;
         SpeedMultiplier = 1;
 
-        // Add parts
+        // Fetch part data from player data
         
         // Go through parts and call the Init function
         for (int i = 0; i < parts.Length; i++)
@@ -62,7 +58,7 @@ public class Basher : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        this.GetComponent<Damagable>().Resistance = 1;
+        this.GetComponent<Damagable>().Resistance = 0.9f;
 
 		// Trigger each part's update
         for (int i = 0; i < parts.Length; i++)
@@ -117,6 +113,7 @@ public class Basher : MonoBehaviour
             GameEnded = true;
             Time.timeScale = 0.05f;
             GameObject.FindObjectOfType<GameUI>().WinGame();
+            GameObject.FindObjectOfType<PlayerData>().GameEnded(true);
         }
     }
 
@@ -130,6 +127,7 @@ public class Basher : MonoBehaviour
             GameEnded = true;
             Time.timeScale = 0.05f;
             GameObject.FindObjectOfType<GameUI>().LoseGame();
+            GameObject.FindObjectOfType<PlayerData>().GameEnded(false);
         }
     }
 }

@@ -11,29 +11,34 @@ public class PlayerData : MonoBehaviour
     // Basic options and stuff
     public string SaveFilePath;
     public SPData playerData;
+    public int LevelNumber;
+    public int MaxLevels;
+    public bool MainMenu;
 
-    // Amount of gold the player has
+    // Amount of gold the player has (moved into player data)
     // You can't have e.g 1.5 gold (well I guess you can but...)
     // so it can do with being an int - will be more accurate
-    public int Gold;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         // Set save file path
-        SaveFilePath = Application.dataPath + "/Save/player.data";
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
+        SaveFilePath = Application.dataPath + "/Save/player.dat";
+
+        // Load the player's save
+        if (!MainMenu)
+            LoadProgress();
 	}
 
     // Save the player data with a simple data
     // class that's serialisable
     void SaveProgress()
     {
+        Debug.Log("Saving progress.");
+
+        if (File.Exists(SaveFilePath))
+            File.Delete(SaveFilePath);
+
         using (Stream stream = File.Open(SaveFilePath, FileMode.CreateNew))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -41,15 +46,71 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    // Loads the player's progress from the file
+    void LoadProgress()
+    {
+        // Create a new save file
+        if (!File.Exists(SaveFilePath))
+        {
+            Debug.Log("Creating new file.");
+
+            playerData = new SPData();
+            playerData.Gold = 0;
+            playerData.LevelsWon = new bool[MaxLevels];
+
+            // Create an empty parts list; if a slot is -1 it means
+            // there is no part there
+            playerData.Parts = new int[Basher.MaxParts];
+            for (int i = 0; i < playerData.Parts.Length; i++)
+                playerData.Parts[i] = -1;
+
+            // Create an empty enchantments list... same as above
+            playerData.Enchantments = new int[Basher.MaxEnchantments];
+            for (int i = 0; i < playerData.Enchantments.Length; i++)
+                playerData.Enchantments[i] = -1;
+
+            // Save into file
+            SaveProgress();
+        }
+        else
+        {
+            Debug.Log("Loading from file.");
+            // If the file has just been created, it means that our playerData
+            // variable already contains data - no need to load it again.
+            using (Stream stream = File.Open(SaveFilePath, FileMode.Open))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                SPData newData = (SPData)formatter.Deserialize(stream);
+
+                // Update the local variable of the player data
+                playerData = newData;
+            }
+        }
+    }
+
+    // Does all necessary end-of-game things
+    public void GameEnded(bool gameWon)
+    {
+        // Verify that the levels won array exists
+        if (playerData.LevelsWon == null || playerData.LevelsWon.Length == 0)
+            playerData.LevelsWon = new bool[MaxLevels];
+
+        // Update player's win status in the player data
+        playerData.LevelsWon[LevelNumber] = true;
+
+        SaveProgress();
+    }
+
+    // Returns gold amount...
     public int GetGoldAmount()
     {
-        return Gold;
+        return playerData.Gold;
     }
 
     // Award some gold
     public void AwardGold(int amount)
     {
-        Gold += amount;
+        playerData.Gold += amount;
     }
 
     // Serialisable player data class
@@ -57,8 +118,12 @@ public class PlayerData : MonoBehaviour
     public class SPData
     {
         [SerializeField]
-        public string Username;
-        [SerializeField]
         public int Gold;
+        [SerializeField]
+        public bool[] LevelsWon;
+        [SerializeField]
+        public int[] Parts;
+        [SerializeField]
+        public int[] Enchantments;
     }
 }
