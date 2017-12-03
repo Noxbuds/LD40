@@ -9,6 +9,7 @@ public class Castle : MonoBehaviour {
 
     // Combined health pool of all obstacles
     public float TotalHealth;
+    public float MaxHealth;
 
     // Number of mages:
     // 0 = no effect
@@ -26,26 +27,56 @@ public class Castle : MonoBehaviour {
     public int NumberOfArchers;
     private float FireTimer;
 
+    private List<Damagable> Allies;
+
 	// Use this for initialization
 	void Start () {
+        // Initialise the Allies list
+        Allies = new List<Damagable>();
+        
         // Parameters above should be assigned in editor
         FireTimer = 0;
 
         foreach (Damagable d in GameObject.FindObjectsOfType<Damagable>())
         {
             if (d.IsEnemy)
+            {
                 TotalHealth += d.Health;
+                Allies.Add(d);
+            }
         }
+
+        // Set max health for UI calculations
+        MaxHealth = TotalHealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        FireTimer += Time.deltaTime;
+        // Calculate new health
+        float newHealth = 0f;
 
-        if (FireTimer >= 10f / (float)NumberOfArchers)
+        for (int i = 0; i < Allies.Count; i++)
         {
-            FireTimer = 0;
-            ShootPlayer(2);
+            newHealth += Allies[i].Health;
+        }
+
+        if (TotalHealth < 0)
+            GameObject.FindObjectOfType<Basher>().GameWin();
+
+        // Only do stuff if the castle is still alive
+        if (TotalHealth > 0)
+        {
+            // Assign the health to the new health after it's calculated
+            TotalHealth = newHealth;
+
+            // Add to the archer firing timer
+            FireTimer += Time.deltaTime;
+
+            if (FireTimer >= 10f / (float)NumberOfArchers)
+            {
+                FireTimer = 0;
+                ShootPlayer(2);
+            }
         }
 	}
 

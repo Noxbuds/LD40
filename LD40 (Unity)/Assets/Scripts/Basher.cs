@@ -17,6 +17,9 @@ public class Basher : MonoBehaviour
     public int MaxParts;
     public int MaxEnchantments;
 
+    public bool GameWon;
+    public bool GameEnded;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -69,6 +72,10 @@ public class Basher : MonoBehaviour
             // Make a 'running total' of the resistance
             this.GetComponent<Damagable>().Resistance *= ResistMults[i];
         }
+
+        // Check if the player has died
+        if (this.GetComponent<Damagable>().Health <= 0)
+            GameLose();
 	}
 
     // Removes a part from the parts list
@@ -97,5 +104,31 @@ public class Basher : MonoBehaviour
         for (int i = 0; i < parts.Length; i++)
             if (parts[i] != null)
                 parts[i].PostHit(ref _this, ref other, damage);
+    }
+
+    // Trigger game win condition
+    public void GameWin()
+    {
+        // Make sure the game doesn't win for some reason after losing
+        if (!GameEnded)
+        {
+            GameWon = true;
+            GameEnded = true;
+            Time.timeScale = 0.05f;
+            GameObject.FindObjectOfType<GameUI>().WinGame();
+        }
+    }
+
+    // Trigger game lose condition
+    public void GameLose()
+    {
+        // Make sure a lose event isn't triggered after the player has
+        // won
+        if (!GameWon)
+        {
+            GameEnded = true;
+            Time.timeScale = 0.05f;
+            GameObject.FindObjectOfType<GameUI>().LoseGame();
+        }
     }
 }

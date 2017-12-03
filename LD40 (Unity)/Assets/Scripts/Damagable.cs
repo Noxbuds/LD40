@@ -23,6 +23,7 @@ public class Damagable : MonoBehaviour
 
     // Whether or not this belongs to the enemy castle
     public bool IsEnemy;
+    float deathTimer; // something else for enemies
 
     // Public stat handlers
     public float Health
@@ -31,6 +32,21 @@ public class Damagable : MonoBehaviour
         set
         {
             // Triggers or events etc
+            
+            // Cause the rigidbody to be movable and lose
+            // its collider
+            if (this.gameObject.name != "Basher" && value < 0)
+            {
+                rb.isKinematic = false;
+                
+                // Remove any colliders on this
+                if (this.GetComponent<Collider2D>() != null)
+                    Destroy(this.GetComponent<Collider2D>());
+
+                // Remove any colliders in children
+                foreach (Collider2D c in this.GetComponentsInChildren<Collider2D>())
+                    Destroy(c);
+            }
 
             // Set value
             _Health = value;
@@ -80,6 +96,11 @@ public class Damagable : MonoBehaviour
         if (_Damage == 0) _Damage = 1;
         if (_Speed == 0) _Speed = 1;
         if (_Resistance == 0) _Resistance = 1;
+
+        // If this is not the basher, we want the object to be
+        // unmovable until it's destroyed
+        if (this.gameObject.name != "Basher")
+            rb.isKinematic = true;
     }
 
     // Update speed
