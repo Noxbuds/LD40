@@ -12,6 +12,7 @@ public class GameUI : MonoBehaviour {
     // Local references
     public Damagable BasherDmgb;
     public Damagable WallDmgb;
+    private GUIStyle TextStyle;
 
     // Images
     public Texture2D HealthArtFG;
@@ -19,9 +20,17 @@ public class GameUI : MonoBehaviour {
     public Texture2D Plain; // 8x8 plain white image
     public Texture2D SuccessImg;
     public Texture2D FailureImg;
+    public Texture2D GoldDisplayBar;
+    public Font GameFont;
 
     private bool WonGame;
     private bool GameEnded;
+
+    void Start()
+    {
+        TextStyle = new GUIStyle();
+        TextStyle.font = GameFont;
+    }
 
     // I wonder if/when they're going to remove this old
     // system...
@@ -73,6 +82,14 @@ public class GameUI : MonoBehaviour {
             // And finally draw the beautiful castle art on top
             GUI.DrawTexture(new Rect(xpos, ypos, HealthArtFG.width * scale, HealthArtFG.height * scale), HealthArtFG);
 
+            // Draw the amount of gold the player has
+            float goldScale = (Screen.width * 0.1f) / GoldDisplayBar.width;
+            TextStyle.fontSize = (int)(Screen.height * 0.04f);
+            TextStyle.normal.textColor = Color.white;
+            int goldAmount = GameObject.FindObjectOfType<PlayerData>().GetGoldAmount();
+
+            GUI.DrawTexture(new Rect(0, 0, GoldDisplayBar.width * goldScale, GoldDisplayBar.height * goldScale), GoldDisplayBar);
+            GUI.Label(new Rect(10 + 16 * goldScale, 2 * goldScale, 150, 50), goldAmount.ToString(), TextStyle);
         }
     }
 

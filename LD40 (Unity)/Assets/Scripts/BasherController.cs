@@ -16,6 +16,7 @@ public class BasherController : MonoBehaviour
 
     // Force applied when moving
     float MovingForce = 20;
+    public HingeJoint2D[] Wheels;
 
 	// Use this for initialization
 	void Start ()
@@ -33,15 +34,10 @@ public class BasherController : MonoBehaviour
     {
         // Check input and add forces
         if (Input.GetKey(Left))
-        {
-            // How the hell big do these forces need to be ?!
-            rb.AddForce(-MovingForce * basher.SpeedMultiplier * basher.transform.forward);
-        }
+            for (int i = 0; i < Wheels.Length; i++)
+                Wheels[i].GetComponent<Rigidbody2D>().AddTorque(10);
         else if (Input.GetKey(Right))
-        {
-            rb.AddForce(MovingForce * basher.SpeedMultiplier * basher.transform.forward);
-        }
-
-        // Control the wheels moving
+            for (int i = 0; i < Wheels.Length; i++)
+                Wheels[i].GetComponent<Rigidbody2D>().AddTorque(-10);
 	}
 }

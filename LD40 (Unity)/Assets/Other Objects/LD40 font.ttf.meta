@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4c2245eef9d37404292b26a98c240e50
+timeCreated: 1512301877
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: LD40 font
+  fontNames:
+  - LD40 font
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

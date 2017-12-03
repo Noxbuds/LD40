@@ -35,7 +35,7 @@ public class Damagable : MonoBehaviour
             
             // Cause the rigidbody to be movable and lose
             // its collider
-            if (this.gameObject.name != "Basher" && value < 0)
+            if (this.transform.root.gameObject.name != "Basher" && value < 0)
             {
                 rb.isKinematic = false;
                 
@@ -148,11 +148,14 @@ public class Damagable : MonoBehaviour
 
         float damageDealt = 0;
 
+        // Initial damage calculation formula was faaaaaaar too crazy...
+        // Let's flatten the curve a bit.
+
         // Pre-calculate damage for parts
         if (this.gameObject.name == "Wall")
-            damageDealt = Damage + Damage * (Mathf.Log(other.Speed) + 0.0005f * Mathf.Pow(other.Speed, 2.0f));
+            damageDealt = 0.75f * (Damage + Damage * (Mathf.Log(other.Speed) + 0.0005f * Mathf.Pow(other.Speed, 2.0f)));
         else
-            damageDealt = Damage + Damage * (Mathf.Log(Speed) + 0.0005f * Mathf.Pow(Speed, 2.0f));
+            damageDealt = 0.75f * (Damage + Damage * (Mathf.Log(Speed) + 0.0005f * Mathf.Pow(Speed, 2.0f)));
 
         // Pre-hit triggers for the battering ram
         if (other.gameObject.GetComponent<Basher>() != null)
