@@ -99,7 +99,8 @@ public class PlayerData : MonoBehaviour
             playerData.LevelsWon = new bool[MaxLevels];
 
         // Update player's win status in the player data
-        playerData.LevelsWon[LevelNumber] = true;
+        if (gameWon)
+            playerData.LevelsWon[LevelNumber] = true;
 
         SaveProgress();
     }

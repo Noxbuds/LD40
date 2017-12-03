@@ -106,7 +106,14 @@ public class MainMenu : MonoBehaviour {
 
                         // Draw the button
                         if (GUI.Button(new Rect(ThisX, i > 2 ? bottomY : topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Level " + i + " (" + (LevelsComplete[i] ? "Done" : "Not done") + ")", ButtonStyle))
-                            SceneManager.LoadScene("Level " + (i + 1).ToString());
+                        {
+                            // You can only start the level if you have completed the previous one
+                            if (i == 0)
+                                SceneManager.LoadScene("Level " + (i + 1).ToString());
+                            if (i > 0)
+                                if (LevelsComplete[i - 1])
+                                    SceneManager.LoadScene("Level " + (i + 1).ToString());
+                        }
                     }
                 }
 
@@ -210,7 +217,25 @@ public class MainMenu : MonoBehaviour {
                     PartPage++;
 
                 break;
-            case 3: // Options
+            case 3: // Settings
+                // The usual 3x2 display position stuff
+                X1 = 11 * ButtonScale;
+                X2 = 71 * ButtonScale;
+                X3 = 131 * ButtonScale;
+                topY = 43 * ButtonScale;
+                bottomY = 70 * ButtonScale;
+
+                // Another 3x2 display. Quite liking how it looks
+                for (int i = 0; i < 6; i++)
+                {
+                    // The index of the X position to use; 1, 2 or 3
+                    int xi = (i > 2) ? i - 3 : i;
+                    float ThisX = (xi == 0) ? X1 : ((xi == 1) ? X2 : X3); // if xi is 0, ThisX = X1, otherwise if xi = 1, ThisX = X2, otherwise ThisX = X3
+
+                    // Draw the button
+                    GUI.Button(new Rect(ThisX, i > 2 ? bottomY : topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "A Setting!", ButtonStyle);
+                }
+
                 break;
         }
 

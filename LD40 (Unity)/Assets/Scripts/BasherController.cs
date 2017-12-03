@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Basher))]
 public class BasherController : MonoBehaviour
@@ -45,5 +46,10 @@ public class BasherController : MonoBehaviour
                     Wheels[i].GetComponent<Rigidbody2D>().AddTorque(-10);
                 }
         }
+
+        // Just go to main menu on pressing escape. Don't want to spend
+        // a lot of time trying to make a pretty pause menu.
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("Main Menu");
 	}
 }
