@@ -109,7 +109,6 @@ public class Basher : MonoBehaviour
         {
             GameWon = true;
             GameEnded = true;
-            Time.timeScale = 0.05f;
             GameObject.FindObjectOfType<GameUI>().WinGame();
             GameObject.FindObjectOfType<PlayerData>().GameEnded(true);
         }
@@ -123,7 +122,6 @@ public class Basher : MonoBehaviour
         if (!GameWon)
         {
             GameEnded = true;
-            Time.timeScale = 0.05f;
             GameObject.FindObjectOfType<GameUI>().LoseGame();
             GameObject.FindObjectOfType<PlayerData>().GameEnded(false);
         }
