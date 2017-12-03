@@ -49,4 +49,8 @@ public class ItemInfo
     public string ItemName;
     [SerializeField]
     public string ItemDescription;
+    [SerializeField]
+    public bool IsEnchantment;
+    [SerializeField]
+    public int GoldCost;
 }

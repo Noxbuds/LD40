@@ -62,6 +62,11 @@ public class PlayerData : MonoBehaviour
             for (int i = 0; i < playerData.Parts.Length; i++)
                 playerData.Parts[i] = -1;
 
+            // Create a list of owned parts
+            playerData.PartsOwned = new bool[GameObject.FindObjectOfType<PartDatabase>().ItemInfoList.Length];
+            for (int i = 0; i < playerData.PartsOwned.Length; i++)
+                playerData.PartsOwned[i] = false;
+
             // Create an empty enchantments list... same as above
             playerData.Enchantments = new int[Basher.MaxEnchantments];
             for (int i = 0; i < playerData.Enchantments.Length; i++)
@@ -123,5 +128,7 @@ public class PlayerData : MonoBehaviour
         public int[] Parts;
         [SerializeField]
         public int[] Enchantments;
+        [SerializeField]
+        public bool[] PartsOwned;
     }
 }

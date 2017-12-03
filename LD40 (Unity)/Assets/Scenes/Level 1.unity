@@ -4855,82 +4855,6 @@ SpriteRenderer:
   m_Size: {x: 0.96, y: 0.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
---- !u!1 &1533037716
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1533037717}
-  - component: {fileID: 1533037718}
-  m_Layer: 0
-  m_Name: PartDatabase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1533037717
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1533037716}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1533037718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1533037716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ddd38167eb8bc04d8451b894b236657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PrefabList:
-  - {fileID: 1884134860066520, guid: b02e9f1ee2d35dc48b4178c44909f004, type: 2}
-  - {fileID: 1989815403577836, guid: 4f301135fbf0467449bf1276fca62174, type: 2}
-  - {fileID: 1615593436372326, guid: 93a226bc577b33f42bf35898d985a244, type: 2}
-  - {fileID: 1905543895611058, guid: 080ecc25927ac7449902880680a78918, type: 2}
-  - {fileID: 1484886049204980, guid: a9cffa8a57a4ccd4b9a333f8dbfba990, type: 2}
-  - {fileID: 1571854254096508, guid: 35ec2d03fd98bb74098b2dbce58db0a7, type: 2}
-  - {fileID: 1682571740663962, guid: baca5cfea16967e4e9eac8e0d4b196a1, type: 2}
-  ItemInfoList:
-  - ItemID: 0
-    ItemName: Heavy Plating
-    ItemDescription: Made of our Royal Blacksmith's finest metals, this armour for
-      your basher makes it take less damage, at the cost of moving slightly slower
-  - ItemID: 1
-    ItemName: Heavy Shield
-    ItemDescription: When we asked our Royal Blacksmith how large a shield he could
-      forge, he crafted us this marvellous piece of art. This will surely protect
-      our basher, but it can only take so much damage!
-  - ItemID: 2
-    ItemName: Mark of Health
-    ItemDescription: Slowly repairs the basher over time
-  - ItemID: 3
-    ItemName: Mark of Sacrifice
-    ItemDescription: On impact, sacrifices some health to deal extra damage
-  - ItemID: 4
-    ItemName: Mark of Speed
-    ItemDescription: You take less damage from sources other than collisions the faster
-      you travel
-  - ItemID: 5
-    ItemName: Miniature Windmill
-    ItemDescription: My lord, I believe if we rotate this unusual contraption, it
-      will cause us to travel forward with slightly more speed
-  - ItemID: 6
-    ItemName: Sail
-    ItemDescription: Our most brilliant soldiers of the Navy claim that this large
-      piece of canvas will make our basher travel faster!
 --- !u!1 &1537053605
 GameObject:
   m_ObjectHideFlags: 0
@@ -5069,6 +4993,48 @@ SpriteRenderer:
   m_Size: {x: 0.96, y: 0.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!1001 &1616298372
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1631338471
 GameObject:
   m_ObjectHideFlags: 0

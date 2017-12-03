@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class BasherPart
 {
-    public enum Type { Part, Enchantment };
 
     // Base class for a basher part
     protected Damagable damagable;
     public int ID;
-    public Type PartType;
 
     // Stuff for displaying on the basher
     public GameObject WorldPrefab;

@@ -262,11 +262,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuID: 0
-  LevelIDs: 
   GoldIcon: {fileID: 2800000, guid: 265fe002fe3e65b4b90d79f9dc522ed9, type: 3}
   Background: {fileID: 2800000, guid: e6a12fd08ba2348478543d8b6f6c2f1b, type: 3}
   ButtonImg: {fileID: 2800000, guid: 3cae40618684cbc41885afaa1d7b5ccc, type: 3}
   BackButtonImg: {fileID: 2800000, guid: 72e8adbed57401e49b7eee02cb87caaf, type: 3}
+  ItemInfoImg: {fileID: 2800000, guid: c9b4483dde50d3a4fb6cf98649964237, type: 3}
   GameFont: {fileID: 12800000, guid: 4c2245eef9d37404292b26a98c240e50, type: 3}
   TextStyle:
     m_Name: 
@@ -469,6 +469,140 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  EquipButtonStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: 574a20c810ede934ab6c3547c5929c3e, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 2800000, guid: 2a23a0d470c0b9049868b17e8ddd6efe, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 2800000, guid: 19968f093fee7bd47922585d0c57c9e4, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 12800000, guid: 4c2245eef9d37404292b26a98c240e50, type: 3}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 4
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  ForwardButtonStyle:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 2800000, guid: d8db16294605e284a862dd14d8f2478a, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 2800000, guid: ce04edaf455383046ba6e6de153a894b, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 2800000, guid: 8a53316da9658e84dbf9d0f7ba38cbc7, type: 3}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!1 &1154247941
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,3 +752,106 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1611940972
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602744665171794, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[2].IsEnchantment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[3].IsEnchantment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[4].IsEnchantment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[0].GoldCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[1].GoldCost
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[2].GoldCost
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[3].GoldCost
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[4].GoldCost
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[5].IsEnchantment
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[5].GoldCost
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[6].GoldCost
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114296377846910090, guid: c649c35716c9cb94cacca617053446a8,
+        type: 2}
+      propertyPath: ItemInfoList.Array.data[5].ItemDescription
+      value: If we rotate this unusual contraption, it will cause us to travel forward
+        with slightly more speed
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c649c35716c9cb94cacca617053446a8, type: 2}
+  m_IsPrefabParent: 0

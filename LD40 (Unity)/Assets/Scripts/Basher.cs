@@ -10,6 +10,7 @@ public class Basher : MonoBehaviour
     // Local references
     private Basher _this;
     public BasherPart[] parts;
+    public BasherPart[] enchantments;
     public float[] ResistMults;
 
     public float SpeedMultiplier;
@@ -29,6 +30,7 @@ public class Basher : MonoBehaviour
         this.GetComponent<Damagable>().IsEnemy = false;
 
         if (parts == null) parts = new BasherPart[MaxParts];
+        if (enchantments == null) enchantments = new BasherPart[MaxEnchantments];
         ResistMults = new float[MaxParts];
 
         // Set default Damagable values for the basher
@@ -37,8 +39,25 @@ public class Basher : MonoBehaviour
         dmgb.Resistance = 1;
         SpeedMultiplier = 1;
 
-        // Fetch part data from player data
+        // Fetch a copy of the player data to shorten the code a bit
+        // and reduce CPU strain (slightly)
+        PlayerData.SPData playerData = GameObject.FindObjectOfType<PlayerData>().playerData;
+
+        // Add each part to the parts list with the help of the part database
+        PartDatabase partDB = GameObject.FindObjectOfType<PartDatabase>();
         
+        // Create the parts
+        for (int i = 0; i < MaxParts; i++)
+        {
+            parts[i] = CreatePart(playerData.Parts[i]);
+        }
+
+        // Create the enchantments
+        for (int i = 0; i < MaxEnchantments; i++)
+        {
+            enchantments[i] = CreatePart(playerData.Enchantments[i]);
+        }
+
         // Go through parts and call the Init function
         for (int i = 0; i < parts.Length; i++)
         {
@@ -51,8 +70,58 @@ public class Basher : MonoBehaviour
             // Just set to 1 so we don't automatically become invincible
             ResistMults[i] = 1;
         }
+
+        // Go through enchantments and call the Init function
+        for (int i = 0; i < enchantments.Length; i++)
+        {
+            if (enchantments[i] != null)
+            {
+                enchantments[i].Initialise(ref _this);
+                enchantments[i].SpawnPrefab();
+            }
+
+            // Just set to 1 so we don't automatically become invincible
+            ResistMults[i] = 1;
+        }
 	}
 	
+    BasherPart CreatePart(int id)
+    {
+        BasherPart part = null;
+
+        // No default case needed since it's already assigned to null
+        switch (id)
+        {
+            case 0:
+                part = new PartHeavyPlating();
+                break;
+            case 1:
+                part = new PartHeavyShield();
+                break;
+            case 2:
+                part = new EnchantHealth();
+                break;
+            case 3:
+                part = new EnchantSacrifice();
+                break;
+            case 4:
+                part = new EnchantSpeed();
+                break;
+            case 5:
+                part = new PartWindmill();
+                break;
+            case 6:
+                part = new PartSail();
+                break;
+        }
+
+        // Return it
+        if (part != null)
+            return part;
+        else
+            return null;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
