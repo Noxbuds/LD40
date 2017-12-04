@@ -22,7 +22,9 @@ public class EnchantHealth : BasherPart {
 	// Update is called once per frame
 	public override void Update(ref Basher basher)
     {
-		// Restore 0.5 health per second
+        base.Update(ref basher);
+
+		// Restore 0.5 health every second
         timer += Time.deltaTime;
 
         if (timer > 1)

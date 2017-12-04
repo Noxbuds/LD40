@@ -9,7 +9,7 @@ public class PartHeavyShield : BasherPart
     //
     /* -- Heavy Shield --
      * Shields your Basher from
-     * a total of 50 damage, then
+     * a total of 10 damage, then
      * breaks
      */
 
@@ -26,7 +26,7 @@ public class PartHeavyShield : BasherPart
         // Heavy Shield is ID 1
         ID = 1;
 
-        Health = 50;
+        Health = 10;
     }
 
     // Take away this shield's health instead

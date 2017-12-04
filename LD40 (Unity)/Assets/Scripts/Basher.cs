@@ -31,7 +31,7 @@ public class Basher : MonoBehaviour
 
         if (parts == null) parts = new BasherPart[MaxParts];
         if (enchantments == null) enchantments = new BasherPart[MaxEnchantments];
-        ResistMults = new float[MaxParts];
+        ResistMults = new float[MaxParts + MaxEnchantments];
 
         // Set default Damagable values for the basher
         Damagable dmgb = this.GetComponent<Damagable>();
@@ -81,7 +81,7 @@ public class Basher : MonoBehaviour
             }
 
             // Just set to 1 so we don't automatically become invincible
-            ResistMults[i] = 1;
+            ResistMults[MaxParts + i] = 1;
         }
 	}
 	
@@ -132,9 +132,17 @@ public class Basher : MonoBehaviour
         {
             if (parts[i] != null)
                 parts[i].Update(ref _this);
+        }
 
-            // Make a 'running total' of the resistance
+        // Make a 'running total' of the resistance
+        for (int i = 0; i < MaxParts + MaxEnchantments; i++)
             this.GetComponent<Damagable>().Resistance *= ResistMults[i];
+
+        // Trigger each enchantment's update
+        for (int i = 0; i < enchantments.Length; i++)
+        {
+            if (enchantments[i] != null)
+                enchantments[i].Update(ref _this);
         }
 
         // Check if the player has died

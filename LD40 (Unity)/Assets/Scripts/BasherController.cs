@@ -50,6 +50,9 @@ public class BasherController : MonoBehaviour
         // Just go to main menu on pressing escape. Don't want to spend
         // a lot of time trying to make a pretty pause menu.
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             SceneManager.LoadScene("Main Menu");
+            GameObject.FindObjectOfType<PlayerData>().SaveProgress();
+        }
 	}
 }

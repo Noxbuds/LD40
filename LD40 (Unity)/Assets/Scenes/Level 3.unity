@@ -300,7 +300,7 @@ MonoBehaviour:
   SizeTier: 0
   TotalHealth: 0
   MaxHealth: 0
-  NumberOfArchers: 0
+  NumberOfArchers: 3
 --- !u!1 &140647174
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,8 +4213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Health: 100
-  _Resistance: 1
-  _Damage: 1.1
+  _Resistance: 0.9
+  _Damage: 1
   _Speed: 0
   IsEnemy: 1
 --- !u!50 &1631338477

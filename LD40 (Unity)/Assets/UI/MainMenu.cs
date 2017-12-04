@@ -67,6 +67,13 @@ public class MainMenu : MonoBehaviour {
         // Just in case...
         TextStyle.wordWrap = false;
 
+        // If we haven't yet seen the tutorial for the shop, let's show it
+        DialogueManager dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
+        if (MenuID != 2)
+        {
+            dialogueManager.NTStopShowing();
+        }
+
         // Draw menu elements
         switch (MenuID)
         {
@@ -98,7 +105,14 @@ public class MainMenu : MonoBehaviour {
 
                 // Parts button
                 if (GUI.Button(new Rect(rightX, topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Parts", ButtonStyle))
+                {
+                    // If we haven't yet seen the tutorial for the shop, let's show it
+                    if (!GameObject.FindObjectOfType<PlayerData>().playerData.TutorialsViewed[0])
+                    {
+                        dialogueManager.StartDialogue("Shop");
+                    }
                     MenuID = 2;
+                }
 
                 // Options button
                 if (GUI.Button(new Rect(leftX, bottomY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Settings", ButtonStyle))
@@ -182,29 +196,27 @@ public class MainMenu : MonoBehaviour {
                     }
                 }
 
-                // If we haven't yet seen the tutorial for the shop, let's show it
-                DialogueManager dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
-                if (!GameObject.FindObjectOfType<PlayerData>().playerData.TutorialsViewed[0] && dialogueManager.CurrentScene != "Shop" && !dialogueManager.ShowingDialogue)
-                {
-                    dialogueManager.StartDialogue("Shop");
-                }
-
+                // Only show the item panel once the shop tutorial has been shown
                 // Draw the item info
                 ItemDisplayScale = Screen.width / ItemInfoImg.width;
 
-                // Draw the item info panel
-                GUI.DrawTexture(new Rect(0, 0, Screen.width, ItemInfoImg.height * ItemDisplayScale), ItemInfoImg);
+                if (GameObject.FindObjectOfType<PlayerData>().playerData.TutorialsViewed[0])
+                {
 
-                // Display the item info
-                string typeString = partList[SelectedPart].IsEnchantment ? " (Enchantment)" :  " (Normal Part)";
+                    // Draw the item info panel
+                    GUI.DrawTexture(new Rect(0, 0, Screen.width, ItemInfoImg.height * ItemDisplayScale), ItemInfoImg);
 
-                GUI.Label(new Rect(19 * ItemDisplayScale, 8 * ItemDisplayScale, ItemInfoImg.width * ItemDisplayScale - 19 * ItemDisplayScale, Screen.height * 0.04f), partList[SelectedPart].ItemName + typeString, TextStyle);
+                    // Display the item info
+                    string typeString = partList[SelectedPart].IsEnchantment ? " (Enchantment)" : " (Normal Part)";
 
-                // Display item description
-                DescriptionYP = 8 * ItemDisplayScale + Screen.height * 0.04f;
+                    GUI.Label(new Rect(19 * ItemDisplayScale, 8 * ItemDisplayScale, ItemInfoImg.width * ItemDisplayScale - 19 * ItemDisplayScale, Screen.height * 0.04f), partList[SelectedPart].ItemName + typeString, TextStyle);
 
-                TextStyle.wordWrap = true;
-                GUI.Label(new Rect(19 * ItemDisplayScale, DescriptionYP, ItemInfoImg.width * ItemDisplayScale - 19 * ItemDisplayScale, Screen.height * 0.04f), partList[SelectedPart].ItemDescription, TextStyle);
+                    // Display item description
+                    DescriptionYP = 8 * ItemDisplayScale + Screen.height * 0.04f;
+
+                    TextStyle.wordWrap = true;
+                    GUI.Label(new Rect(19 * ItemDisplayScale, DescriptionYP, ItemInfoImg.width * ItemDisplayScale - 19 * ItemDisplayScale, Screen.height * 0.04f), partList[SelectedPart].ItemDescription, TextStyle);
+                }
 
                 // Equip/buy buttons
                 if (partsOwned[SelectedPart])
@@ -232,7 +244,7 @@ public class MainMenu : MonoBehaviour {
                     if (GUI.Button(new Rect(138 * ItemDisplayScale, 27 * ItemDisplayScale, 18 * ItemDisplayScale, 8 * ItemDisplayScale), "Buy (" + partList[SelectedPart].GoldCost + "g)", EquipButtonStyle))
                     {
                         // Check if the player can afford it
-                        if (playerData.Gold > partList[SelectedPart].GoldCost)
+                        if (playerData.Gold >= partList[SelectedPart].GoldCost)
                         {
                             // Subtract the cost
                             playerData.Gold -= partList[SelectedPart].GoldCost;

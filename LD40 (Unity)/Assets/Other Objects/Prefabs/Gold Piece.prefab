@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4876515207867664}
   - component: {fileID: 61925411069230606}
-  - component: {fileID: 114432740523542480}
+  - component: {fileID: 114387477714578606}
   m_Layer: 0
   m_Name: Gold Piece
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16654663, y: 0.16315651}
   m_EdgeRadius: 0
---- !u!114 &114432740523542480
+--- !u!114 &114387477714578606
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1297797929237538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47ba52c4897c0ee48993f6c9f61d9285, type: 3}
+  m_Script: {fileID: 11500000, guid: ec654c4e305f95741ac167a1c4c18c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212136346005585344

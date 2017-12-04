@@ -39,7 +39,10 @@ public class DialogueManager : MonoBehaviour
             // we want to change the 'tutorial complete' status
             // in the player data
             if (_ShowingDialogue != value && !value)
+            {
                 GameObject.FindObjectOfType<PlayerData>().playerData.TutorialsViewed[DialogueTrigger.SceneToId(CurrentScene)] = true;
+                GameObject.FindObjectOfType<PlayerData>().SaveProgress();
+            }
 
             // Set the value
             _ShowingDialogue = value;
@@ -154,6 +157,14 @@ public class DialogueManager : MonoBehaviour
     int GetDialogueCount(string Scene)
     {
         return GetDialoguesForScene(Scene).Length;
+    }
+
+    /// <summary>
+    /// Stop showing the tutorial without saving it as completed
+    /// </summary>
+    public void NTStopShowing()
+    {
+        _ShowingDialogue = false;
     }
 }
 
