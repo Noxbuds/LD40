@@ -25,18 +25,35 @@ public class MainMenu : MonoBehaviour {
     public Texture2D ButtonImg;
     public Texture2D BackButtonImg;
     public Texture2D ItemInfoImg;
+    public Texture2D MinusImg;
+    public Texture2D PlusImg;
     public Font GameFont;
     public GUIStyle TextStyle;
+    public GUIStyle TitleStyle;
     public GUIStyle ButtonStyle; // create in editor
     public GUIStyle BackButtonStyle; // create in editor
     public GUIStyle EquipButtonStyle; // create in editor
     public GUIStyle ForwardButtonStyle; // create in editor
+    public GUIStyle PlusButtonStyle;
+    public GUIStyle MinusButtonStyle;
+    public GUIStyle SettingBoxStyle;
 
 	// Don't need to load at startup; the player data handler already does this
     void Start()
     {
         TextStyle = new GUIStyle();
         TextStyle.font = GameFont;
+
+        TitleStyle = new GUIStyle();
+        TitleStyle.font = GameFont;
+        TitleStyle.alignment = TextAnchor.MiddleCenter;
+
+        // Make a special GUI Style for box
+        // this won't have hover/active
+        SettingBoxStyle = new GUIStyle();
+        SettingBoxStyle.alignment = TextAnchor.MiddleCenter;
+        SettingBoxStyle.normal.background = ButtonStyle.normal.background;
+        SettingBoxStyle.font = ButtonStyle.font;
     }
 
     // GUI Code (Yes the legacy GUI system is slower and can be CPU intense,
@@ -55,6 +72,19 @@ public class MainMenu : MonoBehaviour {
         {
             case 0: // Main Menu
                 ShowGold = false;
+
+                // Same code as the shop item panel pretty much
+                float ItemDisplayScale = Screen.width / ItemInfoImg.width;
+
+                // Draw the dialogue panel
+                GUI.DrawTexture(new Rect(0, 0, Screen.width, ItemInfoImg.height * ItemDisplayScale), ItemInfoImg);
+
+                // Display dialogue
+                float DescriptionYP = 8 * ItemDisplayScale + Screen.height * 0.04f;
+                TitleStyle.fontSize = (int)(Screen.height * 0.08f); // correct the font size
+
+                TitleStyle.wordWrap = true;
+                GUI.Label(new Rect(19 * ItemDisplayScale, DescriptionYP, ItemInfoImg.width * ItemDisplayScale - 19 * ItemDisplayScale, Screen.height * 0.04f), "Basher Builder", TitleStyle);
 
                 // Fixed positions
                 float leftX = 41 * ButtonScale;
@@ -132,6 +162,12 @@ public class MainMenu : MonoBehaviour {
                 PartDatabase partDB = GameObject.FindObjectOfType<PartDatabase>();
                 ItemInfo[] partList = partDB.ItemInfoList;
 
+                // Get a local copy of player data
+                PlayerData.SPData playerData = GameObject.FindObjectOfType<PlayerData>().playerData;
+                EquipButtonStyle.fontSize = (int)(Screen.height * 0.04f);
+                bool[] partsOwned = playerData.PartsOwned;
+
+                // Draw the 3x2 layout
                 for (int i = 0; i < 6; i++)
                 {
                     if (i + (PartPage * 6) < partList.Length)
@@ -141,13 +177,20 @@ public class MainMenu : MonoBehaviour {
                         float ThisX = (xi == 0) ? X1 : ((xi == 1) ? X2 : X3); // if xi is 0, ThisX = X1, otherwise if xi = 1, ThisX = X2, otherwise ThisX = X3
 
                         // Draw the button
-                        if (GUI.Button(new Rect(ThisX, i > 2 ? bottomY : topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), partList[i + (PartPage * 6)].ItemName, ButtonStyle))
+                        if (GUI.Button(new Rect(ThisX, i > 2 ? bottomY : topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), partList[i + (PartPage * 6)].ItemName + " " + (IsPartEquipped(i, playerData) ? "(*)" : ""), ButtonStyle))
                             SelectedPart = i + (PartPage * 6);
                     }
                 }
 
+                // If we haven't yet seen the tutorial for the shop, let's show it
+                DialogueManager dialogueManager = GameObject.FindObjectOfType<DialogueManager>();
+                if (!GameObject.FindObjectOfType<PlayerData>().playerData.TutorialsViewed[0] && dialogueManager.CurrentScene != "Shop" && !dialogueManager.ShowingDialogue)
+                {
+                    dialogueManager.StartDialogue("Shop");
+                }
+
                 // Draw the item info
-                float ItemDisplayScale = Screen.width / ItemInfoImg.width;
+                ItemDisplayScale = Screen.width / ItemInfoImg.width;
 
                 // Draw the item info panel
                 GUI.DrawTexture(new Rect(0, 0, Screen.width, ItemInfoImg.height * ItemDisplayScale), ItemInfoImg);
@@ -158,16 +201,12 @@ public class MainMenu : MonoBehaviour {
                 GUI.Label(new Rect(19 * ItemDisplayScale, 8 * ItemDisplayScale, ItemInfoImg.width * ItemDisplayScale - 19 * ItemDisplayScale, Screen.height * 0.04f), partList[SelectedPart].ItemName + typeString, TextStyle);
 
                 // Display item description
-                float DescriptionYP = 8 * ItemDisplayScale + Screen.height * 0.04f;
+                DescriptionYP = 8 * ItemDisplayScale + Screen.height * 0.04f;
 
                 TextStyle.wordWrap = true;
                 GUI.Label(new Rect(19 * ItemDisplayScale, DescriptionYP, ItemInfoImg.width * ItemDisplayScale - 19 * ItemDisplayScale, Screen.height * 0.04f), partList[SelectedPart].ItemDescription, TextStyle);
 
                 // Equip/buy buttons
-                PlayerData.SPData playerData = GameObject.FindObjectOfType<PlayerData>().playerData;
-                EquipButtonStyle.fontSize = (int)(Screen.height * 0.04f);
-                bool[] partsOwned = playerData.PartsOwned;
-
                 if (partsOwned[SelectedPart])
                 {
                     // Check if the part is equipped yet
@@ -226,7 +265,8 @@ public class MainMenu : MonoBehaviour {
                 bottomY = 70 * ButtonScale;
 
                 // Another 3x2 display. Quite liking how it looks
-                for (int i = 0; i < 6; i++)
+                
+                /*for (int i = 0; i < 6; i++)
                 {
                     // The index of the X position to use; 1, 2 or 3
                     int xi = (i > 2) ? i - 3 : i;
@@ -234,6 +274,34 @@ public class MainMenu : MonoBehaviour {
 
                     // Draw the button
                     GUI.Button(new Rect(ThisX, i > 2 ? bottomY : topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "A Setting!", ButtonStyle);
+                }*/
+
+                // Draw the button
+                GUI.Box(new Rect(X1, topY, ButtonImg.width * ButtonScale, ButtonImg.height * ButtonScale), "Music Volume", SettingBoxStyle);
+                SettingBoxStyle.fontSize = ButtonStyle.fontSize;
+
+                float PlusButtonX = Screen.width * 0.078f;
+                float MinusButtonX = Screen.width * 0.276f;
+                float PlusButtonY = Screen.height * 0.448f;
+
+                // Minus button
+                if (GUI.Button(new Rect(MinusButtonX, PlusButtonY, 5 * ButtonScale, 5 * ButtonScale), "", PlusButtonStyle))
+                {
+                    // Modify volume value in the player data
+                    GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume += 0.05f;
+
+                    // Then assign the volume
+                    Camera.main.GetComponent<AudioSource>().volume = GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume;
+                }
+
+                // Plus button
+                if (GUI.Button(new Rect(PlusButtonX, PlusButtonY, 5 * ButtonScale, 5 * ButtonScale), "", MinusButtonStyle))
+                {
+                    // Modify volume value in the player data
+                    GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume -= 0.05f;
+
+                    // Then assign the volume
+                    Camera.main.GetComponent<AudioSource>().volume = GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume;
                 }
 
                 break;

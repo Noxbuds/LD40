@@ -41,6 +41,9 @@ public class PlayerData : MonoBehaviour
         {
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, playerData);
+
+            // Update music volume
+            Camera.main.GetComponent<AudioSource>().volume = GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume;
         }
     }
 
@@ -67,6 +70,11 @@ public class PlayerData : MonoBehaviour
             for (int i = 0; i < playerData.PartsOwned.Length; i++)
                 playerData.PartsOwned[i] = false;
 
+            // Create a list of tutorials completed
+            playerData.TutorialsViewed = new bool[DialogueManager.TutorialCount];
+            for (int i = 0; i < playerData.TutorialsViewed.Length; i++)
+                playerData.TutorialsViewed[i] = false;
+
             // Create an empty enchantments list... same as above
             playerData.Enchantments = new int[Basher.MaxEnchantments];
             for (int i = 0; i < playerData.Enchantments.Length; i++)
@@ -87,6 +95,9 @@ public class PlayerData : MonoBehaviour
 
                 // Update the local variable of the player data
                 playerData = newData;
+
+                // Update music volume
+                Camera.main.GetComponent<AudioSource>().volume = GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume;
             }
         }
     }
@@ -131,5 +142,9 @@ public class PlayerData : MonoBehaviour
         public int[] Enchantments;
         [SerializeField]
         public bool[] PartsOwned;
+        [SerializeField]
+        public float MusicVolume;
+        [SerializeField]
+        public bool[] TutorialsViewed; // 1 element per tutorial...
     }
 }

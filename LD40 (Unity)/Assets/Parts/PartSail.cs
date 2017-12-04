@@ -12,7 +12,7 @@ public class PartSail : BasherPart
     {
         base.Initialise(ref basher);
 
-        ID = 5;
+        ID = 6;
 
         basher.SpeedMultiplier *= 1.2f;
     }

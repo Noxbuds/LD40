@@ -11,13 +11,6 @@ public class Castle : MonoBehaviour {
     public float TotalHealth;
     public float MaxHealth;
 
-    // Number of mages:
-    // 0 = no effect
-    // 1 = 0.8 * enchantment
-    // 2 = 0.4 * enchantment
-    // 3 = 0.2 * enchantment
-    public int NumberOfMages;
-
     // Number of archers:
     // 0 = no arrows
     // 1 = 2 damage every 10 seconds

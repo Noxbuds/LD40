@@ -300,7 +300,6 @@ MonoBehaviour:
   SizeTier: 0
   TotalHealth: 0
   MaxHealth: 0
-  NumberOfMages: 0
   NumberOfArchers: 0
 --- !u!1 &140647174
 GameObject:
@@ -1270,6 +1269,8 @@ MonoBehaviour:
     Parts: 
     Enchantments: 
     PartsOwned: 
+    MusicVolume: 0
+    TutorialsViewed: 
   LevelNumber: 2
   MaxLevels: 3
 --- !u!1 &409186281
@@ -1531,6 +1532,48 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!1001 &488964786
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380044052076858, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a2dcca5f0530b4a4392a612aa045bc09, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &560038981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2266,53 @@ SpriteRenderer:
   m_Size: {x: 0.96, y: 0.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!1001 &824394130
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2105935490}
+    m_Modifications:
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000056197337
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.000000087111104
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c9d45a4c1a19c7e499248b7a882cfd90, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &824394131 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4076293518793642, guid: c9d45a4c1a19c7e499248b7a882cfd90,
+    type: 2}
+  m_PrefabInternal: {fileID: 824394130}
 --- !u!1 &828258106
 GameObject:
   m_ObjectHideFlags: 0
@@ -4123,8 +4213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Health: 100
-  _Resistance: 0
-  _Damage: 0
+  _Resistance: 1
+  _Damage: 1.1
   _Speed: 0
   IsEnemy: 1
 --- !u!50 &1631338477
@@ -5361,7 +5451,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.29, y: 4.29, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 824394131}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5477,7 +5568,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
