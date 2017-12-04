@@ -58,6 +58,7 @@ public class PlayerData : MonoBehaviour
             playerData = new SPData();
             playerData.Gold = 0;
             playerData.LevelsWon = new bool[MaxLevels];
+            playerData.MusicVolume = 1;
 
             // Create an empty parts list; if a slot is -1 it means
             // there is no part there

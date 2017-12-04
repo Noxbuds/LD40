@@ -301,6 +301,7 @@ public class MainMenu : MonoBehaviour {
                 {
                     // Modify volume value in the player data
                     GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume += 0.05f;
+                    GameObject.FindObjectOfType<PlayerData>().SaveProgress();
 
                     // Then assign the volume
                     Camera.main.GetComponent<AudioSource>().volume = GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume;
@@ -311,6 +312,7 @@ public class MainMenu : MonoBehaviour {
                 {
                     // Modify volume value in the player data
                     GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume -= 0.05f;
+                    GameObject.FindObjectOfType<PlayerData>().SaveProgress();
 
                     // Then assign the volume
                     Camera.main.GetComponent<AudioSource>().volume = GameObject.FindObjectOfType<PlayerData>().playerData.MusicVolume;
